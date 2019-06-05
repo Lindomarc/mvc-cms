@@ -1,5 +1,5 @@
 <?php 
-namespace Acma\Classes;
+namespace Acme\Classes;
 
 class AddSlashUrl{
 

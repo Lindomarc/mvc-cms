@@ -20,14 +20,12 @@ $baseController->setUrl( $url );
 /**
  * aqui pega os controllers
  */
-
 $controller = $baseController->getController();
 $classController = new $controller();
 $classController->setTwig($twig);
 
 /**
  * aqui pegar o method 
- */
-
+ */  
 $method = $baseController->getMethod($classController);
 $classController->method();

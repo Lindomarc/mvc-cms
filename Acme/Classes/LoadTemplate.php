@@ -7,7 +7,7 @@ class LoadTemplate{
     private $loader;  
     
     private function loader(){
-        $this->loader = new \Twig_LoaderFileSystem(APP.'Views');
+        $this->loader = new \Twig_Loader_Filesystem(ROOT.'/../App/Views');
         return $this->loader;
     }
 
