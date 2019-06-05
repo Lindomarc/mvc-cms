@@ -8,7 +8,7 @@
 
         protected $url;
 
-        public function seturl(){
+        public function setUrl(){
             $this->url = $url;
         }
 
