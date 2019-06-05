@@ -1,6 +1,0 @@
-{
-    "require": {
-        "phpmailer/phpmailer": "dev-master",
-        "intervention/image":"dev-master"
-    }
-}
