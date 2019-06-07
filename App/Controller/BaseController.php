@@ -15,8 +15,8 @@
         public function getController(){
             $this->controller = ucfirst( $this->controller()['controller']).'Controller';
         
-            foreach( $this->folders as $folder){
-                if(\class_exists("\\App\\Controller\\".$folder."\\".$this->controller)){
+            foreach( $this->folders as $folder ){
+                if( class_exists("\\App\\Controller\\".$folder."\\".$this->controller)){
                     return "\\App\\Controllers\\".$folder."\\".$this->controller;
                 }
                 return "\\App\\Controllers\\Error\NofFoundController";

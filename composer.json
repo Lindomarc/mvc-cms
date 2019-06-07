@@ -1,0 +1,26 @@
+{
+    "name" : "curso de mvc",
+    "type" : "mvc",
+    "require" : {
+        "twig/twig": "1.16.2",
+        "intervention/image": "2.0.17",
+        "phpmailer/phpmailer": "dev-master",
+        "illuminate/support": "5.0.*",
+        "illuminate/contracts":"5.0.*",
+        "patchwork/utf8": "1.2.x",
+        "ext-mbstring": "*"
+    },
+    "autoload":{
+        "psr-4":{
+            "Acme\\Classes\\" : "Acme/Classes",
+            "App\\Models\\" : "App/Models",
+            "App\\Controllers\\" : "App/Controllers",
+            "App\\Core\\" : "App/Core",
+            "Acme\\Traits\\": "Acme/Traits"
+        }
+    
+    },
+    "files":[
+        "vendor/illuminate/support/helpers.php"
+    ]
+}
