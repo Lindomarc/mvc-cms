@@ -6,7 +6,7 @@
 
         private $controller;
         private $method;
-        private $folders =  ['admin', 'site'];
+        private $folders =  ['Admin', 'Site'];
 
         protected $twig;
 
@@ -21,11 +21,11 @@
 
                 if( class_exists("\\App\\Controllers\\{$folder}\\".$this->controller)){
                     return "\\App\\Controllers\\{$folder}\\".$this->controller;
-                }else {
-                    return "\\App\\Controllers\\Error\\NotFoundController";
                 }
                 
             }
+            return "\\App\\Controllers\\Error\\NotFoundController";
+
         }
         
         public function getMethod( $objetc ){
