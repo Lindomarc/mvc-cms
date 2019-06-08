@@ -7,7 +7,6 @@ $url = \Acme\Classes\Url::getUrl();
 /**
  * Carregar o template
  */
-
 $template = new \Acme\Classes\LoadTemplate();
 $twig = $template->init(); 
 
@@ -23,9 +22,9 @@ $baseController->setUrl( $url );
 $controller = $baseController->getController();
 $classController = new $controller();
 $classController->setTwig($twig);
-
 /**
  * aqui pegar o method 
  */  
 $method = $baseController->getMethod($classController);
-$classController->method();
+$classController->$method();
+
