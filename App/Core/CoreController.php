@@ -14,13 +14,13 @@
 
         }
 
-        // private function addSlash(){
+        private function addSlash(){
 
-        //     if( $_SERVER['REQUEST_URI'] != '/'){            
-        //         return  $_SERVER['REQUEST_URI'].'/';
-        //     }
+            if( $_SERVER['REQUEST_URI'] != '/'){            
+                return  $_SERVER['REQUEST_URI'].'/';
+            }
             
-        // }
+        }
     
         // /**
         //  * Adicionar barra ao final doa url
@@ -53,7 +53,7 @@
 
         public function setMethod(){
             if( isset( $this->url ) ){
-                if( substr_count( $this->url, '/' ) >= 2 ){
+                if( substr_count( $this->addSlash(), '/' ) > 1 ){
                     $explodeUrl = explode( '/', $this->url );
                     //excluir valor vazio
                     unset( $explodeUrl[0] );      

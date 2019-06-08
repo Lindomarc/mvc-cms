@@ -12,4 +12,8 @@ class HomeController extends BaseController{
         
     }
 
+    public function products(){
+        dump(['0' => 'teste']);
+    }
+
 }
