@@ -13,7 +13,7 @@ class HomeController extends BaseController{
         $news = News::all();
         dump($news);
         $data = ['title' => 'Pagina Inicial', 'news' => $news];
-        $template = $this->twig->loadTemplate('Home/index.html');
+        $template = $this->twig->loadTemplate('Site/Home/index.html');
         $template->display($data); 
         
     }
