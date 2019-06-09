@@ -7,7 +7,14 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/contacts">Contato</a></li>
+        <li><a href="/abouts">Sobre Nós</a></li>
+        <li><a href="/products">Produtos</a></li>
+    </ul>
     <div class="containter">
+
         {% block content %} {% endblock %}
     </div>
 </body>
