@@ -16,6 +16,15 @@ $twig = $template->init();
 // $function = new Twig_SimpleFunction('generateSchoolList', ['formTools', 'generateSchoolList']);
  $twig->addFunction( $site_url );
 
+ /**
+  * definir timezone
+  */
+  $twig->getExtension('Core')->setTimezone('America/Sao_Paulo');
+  $twig->getExtension('Core')->setDateFormat('d/m/Y', '%d days');
+
+
+
+
 /**
  * Chamar BaseController para pegar os controllers e methods
  */
