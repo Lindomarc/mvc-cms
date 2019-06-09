@@ -13,8 +13,13 @@ $twig = $template->init();
 /**
  * Carregar funções do twig
  */
-// $function = new Twig_SimpleFunction('generateSchoolList', ['formTools', 'generateSchoolList']);
- $twig->addFunction( $site_url );
+$twig->addFunction( $site_url );
+
+ /**
+  * definir timezone
+  */
+$twig->getExtension(\Twig\Extension\CoreExtension::class)->setTimezone('America/Sao_Paulo');
+$twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
 
 /**
  * Chamar BaseController para pegar os controllers e methods
@@ -29,10 +34,8 @@ $controller = $baseController->getController();
 $classController = new $controller();
 $classController->setTwig( $twig );
 
-
 /**
  * aqui pegar o method 
  */  
 $method = $baseController->getMethod( $classController );
 $classController->$method();
-

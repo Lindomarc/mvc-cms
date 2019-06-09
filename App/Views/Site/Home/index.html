@@ -4,8 +4,9 @@
     <h2>Página Inicial</h2>
 
     <!-- {{ site_url() }} -->
-    {% for new in news %}
-        {{ new.title }}<br>
+    {% for notice in news %}
+        {{ notice.title }}<br>
+        {{ notice.date is empty ? "" : notice.date|date("d/m/Y") }}<br>
     {% endfor %}
 
 {% endblock %}
