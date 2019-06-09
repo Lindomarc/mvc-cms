@@ -11,6 +11,12 @@ $template = new \Acme\Classes\LoadTemplate();
 $twig = $template->init(); 
 
 /**
+ * Carregar funções do twig
+ */
+// $function = new Twig_SimpleFunction('generateSchoolList', ['formTools', 'generateSchoolList']);
+ $twig->addFunction( $site_url );
+
+/**
  * Chamar BaseController para pegar os controllers e methods
  */
 $baseController = new \App\Controllers\BaseController();
@@ -21,10 +27,12 @@ $baseController->setUrl( $url );
  */
 $controller = $baseController->getController();
 $classController = new $controller();
-$classController->setTwig($twig);
+$classController->setTwig( $twig );
+
+
 /**
  * aqui pegar o method 
  */  
-$method = $baseController->getMethod($classController);
+$method = $baseController->getMethod( $classController );
 $classController->$method();
 

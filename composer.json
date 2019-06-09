@@ -2,7 +2,7 @@
     "name" : "curso de mvc",
     "type" : "mvc",
     "require" : {
-        "twig/twig": "1.16.2",
+        "twig/twig": "^2.0",
         "intervention/image": "2.0.17",
         "phpmailer/phpmailer": "dev-master",
         "illuminate/support": "5.0.*",
