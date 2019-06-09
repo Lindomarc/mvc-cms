@@ -1,19 +1,22 @@
 <?php
 namespace App\Controllers\Site;
 use \App\Controllers\BaseController as BaseController;
+use \App\Models\Site\NewsModel as News;
 
 class HomeController extends BaseController{
 
     public function index(){
 
-        $data = ['title' => 'Pagina Inicial'];
+        /**
+         * Listar noticias
+         */
+        $news = News::all();
+        dump($news);
+        $data = ['title' => 'Pagina Inicial', 'news' => $news];
         $template = $this->twig->loadTemplate('Home/index.html');
         $template->display($data); 
         
     }
 
-    public function products(){
-        dump(['0' => 'teste']);
-    }
 
 }

@@ -9,7 +9,8 @@
         "illuminate/contracts":"5.0.*",
         "patchwork/utf8": "1.2.x",
         "ext-mbstring": "*",
-        "symfony/var-dumper": "3.0.x-dev"
+        "symfony/var-dumper": "3.0.x-dev",
+        "php-activerecord/php-activerecord": "^1.2"
     },
     "autoload":{
         "psr-4":{
