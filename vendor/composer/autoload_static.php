@@ -47,6 +47,7 @@ class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
             'App\\Models\\' => 11,
             'App\\Core\\' => 9,
             'App\\Controllers\\' => 16,
+            'App\\Config\\' => 11,
             'Acme\\Traits\\' => 12,
             'Acme\\Classes\\' => 13,
         ),
@@ -108,6 +109,10 @@ class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
         'App\\Controllers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App/Controllers',
+        ),
+        'App\\Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App/Config',
         ),
         'Acme\\Traits\\' => 
         array (
