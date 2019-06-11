@@ -20,6 +20,7 @@ return array(
     'App\\Models\\' => array($baseDir . '/App/Models'),
     'App\\Core\\' => array($baseDir . '/App/Core'),
     'App\\Controllers\\' => array($baseDir . '/App/Controllers'),
+    'App\\Config\\' => array($baseDir . '/App/Config'),
     'Acme\\Traits\\' => array($baseDir . '/Acme/Traits'),
     'Acme\\Classes\\' => array($baseDir . '/Acme/Classes'),
 );

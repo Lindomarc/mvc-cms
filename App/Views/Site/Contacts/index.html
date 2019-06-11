@@ -1,6 +1,21 @@
 {% extends "Layout.html" %}
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
-    <h2>Contatos</h2>
+    <h2>Página de Contato</h2>
+    
+    {% if message  is defined %}
+        {{ message }}
+    {% endif %}
+
+    <form action="/contacts/send" method="POST">
+        
+        <label for="name">Nome:</label>
+            <input id="name" name="name" type="text">
+        <label for="email">email:</label>
+            <input id="email" name="email" type="text">
+        <label for="message">Mensagem:</label>  
+            <textarea name="message" id="" cols="30" rows="10"></textarea>
+            <input id="submit" type="submit" value="Enviar email ">
+    </form>
 
 {% endblock %}
