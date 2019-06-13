@@ -15,8 +15,8 @@ class AdminController extends BaseController{
     }
 
     public function login(){
-       
-        if( $_SESSION['REQUEST_METHOD'] == 'POST' ):
+
+        if( !empty($_POST) ):
 
             /**
              * limpar o formulario
