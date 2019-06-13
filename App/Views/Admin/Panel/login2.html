@@ -1,0 +1,16 @@
+{% extends "Admin/Layout.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    <h2>Página login</h2>
+    {% if erro  is defined %}
+        {{ erro }}
+    {% endif %}
+        <form action="/admin/login" method="POST">
+        <label for="email">email</label>
+            <input type="email" name="email" id="email">
+        <br>
+        <label for="password"> password</label>
+            <input type="password" name="password" id="password">
+        <input type="submit" value="login">
+    </form>
+{% endblock %}
