@@ -28,7 +28,7 @@ class appModel extends  \ActiveRecord\Model{
 
     public static function where( $field, $value, $type   null, $oder = null ){
         $typeListing = ( $type == null ) ? 'first', 'all';
-        return parent::find($typeListing, ['order' => $order, 'conditions' => [$field. '=?, $value]]);
+        return parent::find($typeListing, ['order' => $order, 'conditions' => [$field. '=?', $value]]);
     }
 
 }
