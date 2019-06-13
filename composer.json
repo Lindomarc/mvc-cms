@@ -14,11 +14,11 @@
     },
     "autoload":{
         "psr-4":{
-            "Acme\\Traits\\": "Acme/Traits",
-            "Acme\\Classes\\" : "Acme/Classes",
             "App\\Models\\" : "App/Models",
             "App\\Config\\" : "App/Config",
             "App\\Controllers\\" : "App/Controllers",
+            "Acme\\Traits\\": "Acme/Traits",
+            "Acme\\Classes\\" : "Acme/Classes",
             "App\\Core\\" : "App/Core"
             
         }
