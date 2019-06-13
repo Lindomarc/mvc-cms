@@ -7,7 +7,7 @@ class appModel extends  \ActiveRecord\Model{
         if ($limit != null) {
             return parent::find( 'all', [ 'select' => '*', 'order' => $order, 'limit' => $limit ] );
         }
-        return parent::find('all', ['order' => $order])
+        return parent::find('all', ['order' => $order]);
     }
 
     public static function update($id, Array $atrributes){
@@ -26,8 +26,8 @@ class appModel extends  \ActiveRecord\Model{
         return $delete->delete();  
     }
 
-    public static function where( $field, $value, $type   null, $oder = null ){
-        $typeListing = ( $type == null ) ? 'first', 'all';
+    public static function where( $field, $value, $type =  null, $order = null ){
+        $typeListing = ( $type == null ) ? 'first' : 'all';
         return parent::find($typeListing, ['order' => $order, 'conditions' => [$field. '=?', $value]]);
     }
 
