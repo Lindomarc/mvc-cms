@@ -14,7 +14,7 @@ $twig = $template->init();
  * Carregar funções do twig
  */
 $twig->addFunction( $site_url );
-
+$twig->addGlobal("session", $_SESSION);
  /**
   * definir timezone
   */
