@@ -6,6 +6,8 @@ use \Acme\Classes\Redirect;
 use \Acme\Classes\Hash;
 class AdminController extends BaseController{
 
+    use \Acme\Traits\LoginTrait;    
+
     public function index(){
         
         $data = ['title' => 'Login - Administrador'];
@@ -16,6 +18,8 @@ class AdminController extends BaseController{
 
     public function login(){
         if( !empty($_POST) ):
+
+            $this->setDb( new Admin() );
 
             /**
              * limpar o formulario
@@ -37,20 +41,20 @@ class AdminController extends BaseController{
                 $senhaEncrited = Hash::makePassword( $password, $dataAuth->salt );
                 
                 if( Hash::validatePassword( $password, $dataAuth->password )){
-        
-                    $admin = new Admin();
 
-                    $dataAdminLoged = $admin->login( $email, $senhaEncrited );
+                    $this->setFields( [ 'admins.email', 'admins.password' ] );
+
+                    $dataAdminLoged = $this->loginSystem( $email, $senhaEncrited );
+
                     $pkcount =  is_array((array)$dataAdminLoged) ? count( (array)$dataAdminLoged ) : 0 ;
         
-                    $admin->setFields( [ 'admins.email', 'admins.password' ] );
 
                     if($pkcount > 0){
 
                         session_regenerate_id();
-                        $_SESSION['AdminLoged'] = true;
-                        $_SESSION['idAdmin'] = $dataAdminLoged->id;
-                        $_SESSION['dataAdmin'] = serialize($dataAdminLoged);
+                        $_SESSION['user']['AdminLoged'] = true;
+                        $_SESSION['user']['idAdmin'] = $dataAdminLoged->id;
+                        $_SESSION['user']['dataAdmin'] = serialize($dataAdminLoged);
             
                         Redirect::to('panel');
 

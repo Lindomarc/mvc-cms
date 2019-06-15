@@ -2,11 +2,6 @@
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
     <h2>Página Inicial</h2>
-
-    <!-- {{ site_url() }} -->
-    {% for notice in news %}
-        {{ notice.title }}<br>
-        {{ notice.date is empty ? "" : notice.date|date("d/m/Y") }}<br>
-    {% endfor %}
-
+    <button id="btn-list-notices">Listar Noticias</button>
+    <div id="list"></div>
 {% endblock %}

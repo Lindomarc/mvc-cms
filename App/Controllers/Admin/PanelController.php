@@ -7,7 +7,7 @@ use \Acme\Classes\Redirect;
 class PanelController extends BaseController{
 
     public function index(){
-
+dump($_SESSION);
         $data = ['title' => 'Paine de controle - Administrador'];
         $template = $this->twig->loadTemplate('Admin/Panel/panel.html');
         $template->display($data); 
