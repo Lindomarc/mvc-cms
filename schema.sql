@@ -1,9 +1,9 @@
-# Dump table tb_admin
+# Dump table admin
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `tb_admin`;
+DROP TABLE IF EXISTS `admin`;
 
-CREATE TABLE `tb_admin` (
+CREATE TABLE `admin` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -12,8 +12,9 @@ CREATE TABLE `tb_admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `tb_admin` WRITE;
+LOCK TABLES `admin` WRITE;
 
-INSERT INTO `tb_admin` (`id`, `name`, `email`, `password`, `salt`)
+-- senha admin123
+INSERT INTO `admin` (`id`, `name`, `email`, `password`, `salt`)
 VALUES
-	(1,'administrator','admin@exemple.com','admin123','zBVFqtcUCOqvcFRFsjp7Yg==');
+	(1,'admin','admin@exemple.com','IhCswJy3kCYXI','Ih5rD9qRphgnld78TC8wsQ==');

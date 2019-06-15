@@ -1,13 +1,13 @@
 <?php
 namespace App\Controllers\Site;
 use \App\Controllers\BaseController as BaseController;
-use \App\Models\Admin\AdminModel as Admin; 
+use \App\Models\Admin\Admins as Admin; 
 use \Acme\Classes\Redirect;
-
+use \Acme\Classes\Hash;
 class AdminController extends BaseController{
 
     public function index(){
-
+        
         $data = ['title' => 'Login - Administrador'];
         $template = $this->twig->loadTemplate('Admin/Panel/login.html');
         $template->display($data); 
@@ -15,40 +15,60 @@ class AdminController extends BaseController{
     }
 
     public function login(){
-
         if( !empty($_POST) ):
 
             /**
              * limpar o formulario
-             */
+             */ 
             $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
             $email = isset($_POST['email'])? $_POST['email'] : '' ;
             $password = filter_var( $password, FILTER_SANITIZE_STRING );
             $email = filter_var( $email, FILTER_VALIDATE_EMAIL );
 
-            $admin = new Admin();
-            $admin->setFields( [ 'tb_admin.email', 'tb_admin.password' ] );
+            $dataAuth = Admin::where( 'admins.email', $email );
+
+            if(count( (array)$dataAuth ) == 0 ){
+
+                $_SESSION['erro'] = 'Usuário ou senha inválidos';
+                Redirect::to( 'admin' );
+            
+            } else {
+                
+                $senhaEncrited = Hash::makePassword( $password, $dataAuth->salt );
+                
+                if( Hash::validatePassword( $password, $dataAuth->password )){
         
-            $dataAdminLoged = $admin->login( $email, $password );
-            $dataAdminLoged = (array)$dataAdminLoged;
-            $pkcount =  is_array($dataAdminLoged) ? count( $dataAdminLoged ) : 0 ;
+                    $admin = new Admin();
 
-            if($pkcount > 0){
+                    $dataAdminLoged = $admin->login( $email, $senhaEncrited );
+                    $pkcount =  is_array((array)$dataAdminLoged) ? count( (array)$dataAdminLoged ) : 0 ;
+        
+                    $admin->setFields( [ 'admins.email', 'admins.password' ] );
 
-                session_regenerate_id();
-                $_SESSION['AdminLoged'] = true;
-                $_SESSION['idAdmin'] = $dataAdminLoged->id;
-                $_SESSION['dataAdmin'] = serialize($dataAdminLoged);
-    
-                Redirect::to('panel');
+                    if($pkcount > 0){
 
-            }else{
-                $data = [
-                    'title' => 'Login do Administrador',
-                    'erro' => 'Erro tentar fazer login'
-                ];
-                $template = $this->twig->loadTemplate('Admin/Panel/login.html'); 
-                $template->display( $data );
+                        session_regenerate_id();
+                        $_SESSION['AdminLoged'] = true;
+                        $_SESSION['idAdmin'] = $dataAdminLoged->id;
+                        $_SESSION['dataAdmin'] = serialize($dataAdminLoged);
+            
+                        Redirect::to('panel');
+
+                    }else{
+                        $data = [
+                            'title' => 'Login do Administrador',
+                            'erro' => 'Erro tentar fazer login'
+                        ];
+                        
+                    }
+        
+                }else{
+
+                    $data = [
+                        'title' => 'Login do Administrador',
+                        'erro' => 'Erro tentar fazer login'
+                    ];
+                }
                 
             }
         else:
