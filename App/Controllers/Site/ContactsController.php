@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers\Site;
 use \App\Controllers\BaseController as BaseController;
-use \Acme\Classes\Email as Email;
+use \App\Classes\Email as Email;
 
 class ContactsController extends BaseController{
 
