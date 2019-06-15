@@ -7,12 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
-        '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
-        '6e60481d8c04e99474e2ba7b3658ab5a' => __DIR__ . '/..' . '/php-activerecord/php-activerecord/ActiveRecord.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -24,32 +20,18 @@ class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\VarDumper\\' => 28,
-            'Stringy\\' => 8,
         ),
         'P' => 
         array (
-            'Patchwork\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'I' => 
         array (
             'Intervention\\Image\\' => 19,
-            'Illuminate\\Support\\' => 19,
-            'Illuminate\\Contracts\\' => 21,
-        ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Inflector\\' => 26,
         ),
         'A' => 
         array (
-            'App\\Models\\' => 11,
-            'App\\Core\\' => 9,
-            'App\\Controllers\\' => 16,
-            'App\\Config\\' => 11,
-            'Acme\\Traits\\' => 12,
-            'Acme\\Classes\\' => 13,
+            'App\\' => 4,
         ),
     );
 
@@ -66,18 +48,6 @@ class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Symfony\\Component\\VarDumper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/var-dumper',
-        ),
-        'Stringy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
-        ),
-        'Patchwork\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork',
-        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
@@ -86,41 +56,9 @@ class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
-        'Illuminate\\Support\\' => 
+        'App\\' => 
         array (
-            0 => __DIR__ . '/..' . '/illuminate/support',
-        ),
-        'Illuminate\\Contracts\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/contracts',
-        ),
-        'Doctrine\\Common\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
-        ),
-        'App\\Models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/App/Models',
-        ),
-        'App\\Core\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/App/Core',
-        ),
-        'App\\Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/App/Controllers',
-        ),
-        'App\\Config\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/App/Config',
-        ),
-        'Acme\\Traits\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Acme/Traits',
-        ),
-        'Acme\\Classes\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Acme/Classes',
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 
@@ -134,17 +72,12 @@ class ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619
         ),
     );
 
-    public static $classMap = array (
-        'Normalizer' => __DIR__ . '/..' . '/patchwork/utf8/src/Normalizer.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit365a3cf2f1ee3b47f998aa3c0f6d1619::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -2,11 +2,11 @@
 namespace App\Controllers\Site;
 use \App\Controllers\BaseController as BaseController;
 use \App\Models\Admin\Admins as Admin; 
-use \Acme\Classes\Redirect;
-use \Acme\Classes\Hash;
+use \App\Classes\Redirect;
+use \App\Classes\Hash;
 class AdminController extends BaseController{
 
-    use \Acme\Traits\LoginTrait;    
+    use \App\Traits\LoginTrait;    
 
     public function index(){
         

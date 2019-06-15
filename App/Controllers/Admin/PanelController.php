@@ -2,7 +2,7 @@
 namespace App\Controllers\Site;
 use \App\Controllers\BaseController as BaseController;
 use \App\Models\Admin\AdminModel as Admin; 
-use \Acme\Classes\Redirect;
+use \App\Classes\Redirect;
 
 class PanelController extends BaseController{
 

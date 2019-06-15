@@ -2,12 +2,12 @@
 /**
  * pegar a url 
  */
-$url = \Acme\Classes\Url::getUrl();
+$url = \App\Classes\Url::getUrl();
 
 /**
  * Carregar o template
  */
-$template = new \Acme\Classes\LoadTemplate();
+$template = new App\Classes\LoadTemplate();
 $twig = $template->init(); 
 
 /**
@@ -24,7 +24,7 @@ $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y'
 /**
  * Chamar BaseController para pegar os controllers e methods
  */
-$baseController = new \App\Controllers\BaseController();
+$baseController = new App\Controllers\BaseController();
 $baseController->setUrl( $url );
 
 /**

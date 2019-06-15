@@ -1,6 +1,9 @@
 <?php 
 namespace  App\Models\Site;
+use \App\Models\Model;
 
-class News extends  \App\Models\AppModel{
-    static  $table_name = 'news';
+class News extends  Model{
+
+    public  $table = 'news';
+    
 }
