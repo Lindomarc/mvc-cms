@@ -12,23 +12,28 @@ trait LoginTrait
     private $fields;
     private $field;
     private $sqlField;
+    private $db;
+
+    public function setDb( $db ){
+        $this->db = $db;
+    }
 
     public function setFields( $fields ){
         $this->fields = $fields;
     }
 
-    public function login( $email, $passsord ){
+    public function loginSystem( $email, $passsord ){
 
         foreach ($this->fields as $field){
             $this->field.= $field.'=? and ';  
         }
         $this->sqlField = rtrim( $this->field,'and ' );
-        $Loged = parent::find('first',[ 'conditions' => [ $this->sqlField, $email, $passsord ] ] );
+        $Loged = $this->db->find('first',[ 'conditions' => [ $this->sqlField, $email, $passsord ] ] );
         
         return $Loged;
     }
 
-    public function logout( $session ){
+    public function logout( $session = 'user' ){
         if(isset( $_SESSION[ $session ] ) ){
             unset( $_SESSION[ $session ] );
             // prevenir roubo de sessão
@@ -36,7 +41,7 @@ trait LoginTrait
         }
     }
 
-    public static function isLoged( $session   ){
+    public static function isLoged( $session  = 'user' ){
         if ( !isset( $_SESSION[ $session ] ) ) {
             Redirect::to( '/admin' );
         }   

@@ -2,12 +2,16 @@
 namespace App\Models;
 
 class AppModel extends  \ActiveRecord\Model{
- 
-    public static function listing( $limit = null, $order = null ){
+
+
+    /**
+     * @param $args string 'list', 'all', 'first'
+     */
+    public static function list( $args, $limit = null, $order = null ){
         if ( $limit != null ) {
-            return parent::find( 'all', [ 'select' => '*', 'order' => $order, 'limit' => $limit ] );
+            return parent::find( $args, [ 'select' => '*', 'order' => $order, 'limit' => $limit ] );
         }
-        return parent::find( 'all', ['order' => $order] );
+        return parent::find( $args, ['order' => $order] );
     }
 
     public static function updating( $id,  Array $atrributes ){
