@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Traits;
-
 use \App\Classe\Redirect;
 
 /**
@@ -48,6 +46,4 @@ trait LoginTrait
     }
 
 }
-
-
 ?>

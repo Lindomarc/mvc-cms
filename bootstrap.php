@@ -1,23 +1,21 @@
 <?php 
-/**
- * pegar a url 
- */
-$url = \App\Classes\Url::getUrl();
 
 /**
  * Carregar o template
  */
 $template = new App\Classes\LoadTemplate();
-$twig = $template->init(); 
+$twig = $template->init();
 
 /**
  * Carregar funções do twig
  */
-$twig->addFunction( $site_url );
+$twig->addFunction($site_url);
+$twig->addFunction($message);
 $twig->addGlobal("session", $_SESSION);
- /**
-  * definir timezone
-  */
+
+/**
+* definir timezone
+*/
 $twig->getExtension(\Twig\Extension\CoreExtension::class)->setTimezone('America/Sao_Paulo');
 $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
 
@@ -25,17 +23,25 @@ $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y'
  * Chamar BaseController para pegar os controllers e methods
  */
 $baseController = new App\Controllers\BaseController();
-$baseController->setUrl( $url );
 
 /**
- * aqui pega os controllers
+ * pega o controllers
  */
 $controller = $baseController->getController();
 $classController = new $controller();
 $classController->setTwig( $twig );
 
-/**
- * aqui pegar o method 
- */  
-$method = $baseController->getMethod( $classController );
-$classController->$method();
+try {
+
+  /**
+   * pegar o method 
+   */  
+  $method = $baseController->getMethod( $classController );
+  $parameter = $baseController->getParameter();
+  $classController->$method($parameter);
+
+} catch (Throwable $e) {
+
+  echo($e->getMessage()."\n".$e->getFile()."\n".$e->getLine());
+
+}

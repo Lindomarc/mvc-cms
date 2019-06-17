@@ -1,8 +1,11 @@
 <?php 
 namespace App\Models\Admin;
-
-class Admins extends \App\Models\AppModel{
+use \App\Models\Model;
+class Admins extends Model{
     
-    // static $table_name = 'admin';
+    protected $table = 'admins';
 
+    public $logged = 'admin_logged';
+
+    public $data = 'admin_data';
 }

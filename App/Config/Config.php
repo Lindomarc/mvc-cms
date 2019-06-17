@@ -7,9 +7,9 @@ return[
         'username'  =>  'root', 
         'password'  =>  'root'  
     ],
-    'twig'=>[
+    'controllers'=>[
         'folders' => [
-            'site', 'admin'
+            'Site', 'Admin'
         ]
     ]
 ];

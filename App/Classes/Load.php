@@ -5,7 +5,7 @@ class Load
 {
     static $config;
 
-    public function load($index){
+    public function config($index){
         
         static::$config = require "../App/Config/Config.php";
 

@@ -11,7 +11,7 @@ class NewsController extends BaseController{
         /**
          * Listar noticias
          */
-        $news = News::list('all');
+        $news = News::all();
         $news_array = [];
         foreach ($news as $new) {
             $news_array[]= $new->to_array();

@@ -3,18 +3,19 @@ namespace App\Controllers\Site;
 use \App\Controllers\BaseController;
 use \App\Models\Site\News;
 
-class HomeController extends BaseController{
+class HomeController extends BaseController
+{
 
     public function index(){
         
         $news = new News;
 
-        dd( $news->all() );
+        $noticeFound = $news->all();
 
-
-        $data = ['title' => 'Pagina Inicial', 'news' => $news];
-        $template = $this->twig->loadTemplate('Site/Home/index.html');
-        $template->display($data); 
+        $this->view('Site.Home.index',[
+            'title' => 'Pagina Inicial',
+            'news' => $noticeFound
+        ]);
         
     }
 
