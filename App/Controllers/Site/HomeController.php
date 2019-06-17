@@ -1,9 +1,10 @@
 <?php
 namespace App\Controllers\Site;
 use \App\Controllers\BaseController;
-use \App\Models\Site\News;BaseController
+use \App\Models\Site\News;
 
-class HomeController extends BaseController{
+class HomeController extends BaseController
+{
 
     public function index(){
         
@@ -11,11 +12,10 @@ class HomeController extends BaseController{
 
         $noticeFound = $news->all();
 
-        $this->view('site.home',[
+        $this->view('Site.Home.index',[
             'title' => 'Pagina Inicial',
             'news' => $noticeFound
         ]);
- 
         
     }
 

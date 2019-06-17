@@ -3,7 +3,8 @@ namespace App\Classes;
 class Url
 {
     public static function getUrl() {
-		return parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+
+		return parse_url( rtrim($_SERVER['REQUEST_URI'], '/'), PHP_URL_PATH );
 	}
 
 	public static function getQueryString(){
