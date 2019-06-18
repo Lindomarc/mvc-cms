@@ -5,6 +5,7 @@ use App\Classes\Redirect;
 use \App\Classes\Email;
 use \App\Classes\Validator;
 use App\Classes\Flash;
+use App\Classes\Request;
 use App\Models\Admin\Admins;
 
 class ContactsController extends BaseController{
@@ -17,18 +18,20 @@ class ContactsController extends BaseController{
 
     public function send(){
 
-        if( $_SERVER["REQUEST_METHOD"] == 'POST' ){
+        if( Request::request('post') ){
 
             $validate = Validator::validate(function(){
                 return Validator::required('email','name','message')
+                ->sanitize('name:s','email:s','message:s')
                 ->email('email');
+
             });
-            
-            
+            dd($validate);
+            die;
+ 
             if(Validator::failed()){
                 return Redirect::back();
             }
-            
             $name = filter_var( $_POST['name'], FILTER_SANITIZE_STRING );
             $email = filter_var( $_POST['email'], FILTER_SANITIZE_STRING );
             $message = filter_var( $_POST['message'], FILTER_SANITIZE_STRING );
@@ -53,6 +56,8 @@ class ContactsController extends BaseController{
 
             $template = $this->twig->loadTemplate( 'Site/Contacts/index.html' );
             $template->display( $data ); 
+        } else {
+            
         }
     }
 
