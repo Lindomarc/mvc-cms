@@ -8,11 +8,19 @@ class NewsController extends ContainerController{
     
     public function index(){
 
+        $notice = new News;
+        $notices = $notice->list()->paginate(10)->get();
 
-        $News = new News;
-        $noticiasEncontradas = $News->list()->get();
-        dd($noticiasEncontradas);
+        $data = [
+            'title' => 'Página Noticias',
+            'notices' => $notices,
+            'links' => $notice->links()
+        ];
 
 
+        $this->view(
+            'Site.News.index',                    
+            $data
+        );
     }
 }

@@ -3,11 +3,21 @@ namespace App\Traits;
 
 trait CollectionDb
 {
+    use Paginate;
+
     protected $paginate;
     protected $search;
     protected $binds = [];
+    protected $pdoStatement;
 
     public function paginate($perPage){
+        $this->perPage = $perPage;
+
+        $list = $this->connection->prepare($this->sql);
+        $this->bindValues($list);
+        $this->pdoStatement = $list; 
+        $this->sql .= $this->sqlPaginate();
+        return $this;
 
     }
 
