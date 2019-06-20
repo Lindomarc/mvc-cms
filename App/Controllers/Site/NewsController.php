@@ -34,7 +34,7 @@ class NewsController extends ContainerController{
         });
         
         $notice = new News;
-        $register = $notice->insert($validate);
+        $register = $notice->update($validate, ['id' => 58]);
         dd($register);
     }
 
