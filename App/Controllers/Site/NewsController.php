@@ -2,6 +2,8 @@
 namespace App\Controllers\Site;
 use \App\Controllers\ContainerController;
 use \App\Models\Site\News;
+use \App\Classes\Validator;
+
 
 class NewsController extends ContainerController{
 
@@ -23,4 +25,17 @@ class NewsController extends ContainerController{
             $data
         );
     }
+
+    public function store(){
+
+        $validate = Validator::validate(function(){
+            return Validator::required('title','slug')
+            ->sanitize('title:s','slug:s');
+        });
+        
+        $notice = new News;
+        $register = $notice->insert($validate);
+        dd($register);
+    }
+
 }
