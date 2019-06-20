@@ -8,7 +8,7 @@ class Connection
 {
     public static function connection(){
 
-        $config = Config::config('db');
+        $config = Config::load('db');
 
         $pdo = new PDO("mysql:host={$config->host};dbname={$config->dbname}", $config->username, $config->password);
 

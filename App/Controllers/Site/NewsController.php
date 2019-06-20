@@ -6,18 +6,13 @@ use \App\Models\Site\News;
 class NewsController extends ContainerController{
 
     
-    public function listNews(){
+    public function index(){
 
-        /**
-         * Listar noticias
-         */
-        $news = News::all();
-        $news_array = [];
-        foreach ($news as $new) {
-            $news_array[]= $new->to_array();
-        }
 
-        echo json_encode( $news_array );
+        $News = new News;
+        $noticiasEncontradas = $News->list()->get();
+        dd($noticiasEncontradas);
+
 
     }
 }
