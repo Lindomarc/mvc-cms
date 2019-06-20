@@ -1,7 +1,7 @@
 <?php 
 namespace App\Classes;
 
-class Load
+class Config
 {
     static $config;
 

@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-use \App\Classes\Load;
+use \App\Classes\Config;
 
 use PDO;
 
@@ -8,7 +8,7 @@ class Connection
 {
     public static function connection(){
 
-        $config = Load::config('db');
+        $config = Config::config('db');
 
         $pdo = new PDO("mysql:host={$config->host};dbname={$config->dbname}", $config->username, $config->password);
 
