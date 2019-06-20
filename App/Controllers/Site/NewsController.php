@@ -1,9 +1,9 @@
 <?php
 namespace App\Controllers\Site;
-use \App\Controllers\BaseController as BaseController;
+use \App\Controllers\ContainerController;
 use \App\Models\Site\News;
 
-class NewsController extends BaseController{
+class NewsController extends ContainerController{
 
     
     public function listNews(){

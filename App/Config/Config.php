@@ -41,6 +41,14 @@ return[
          *  ssl
          *  tls
          */
-        'SMTPsecure' => 'tls'
+        'SMTPsecure' => 'ssl'
+    ],
+    'environment' => [
+        /**
+         *  0 = development
+         *  1 = test
+         *  2 = prodution
+         */
+        'type' => '0'
     ]
 ];

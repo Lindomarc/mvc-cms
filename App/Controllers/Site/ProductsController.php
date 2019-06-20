@@ -1,14 +1,13 @@
 <?php
 namespace App\Controllers\Site;
-use \App\Controllers\BaseController as BaseController;
+use \App\Controllers\ContainerController;
  
-class ProductsController extends BaseController{
+class ProductsController extends ContainerController{
 
     public function index(){
         
         $data = ['title' => 'Página de produtos'];
-        $template = $this->twig->loadTemplate('Site/Products/index.html');
-        $template->display($data); 
+        $this->view('Site.Products.index', $data);
         
     }
 

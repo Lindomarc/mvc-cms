@@ -1,14 +1,15 @@
 <?php
 namespace App\Traits;
-
+use App\Classes\App;
 /**
  * 
  */
 trait View
 {
-    public function view( $view, $data ){
+    public function view($view, $data){
 
-        $template = $this->twig->loadTemplate(str_replace('.','/',ucfirst($view)).'.html');
+        $twig =  App::get('twig');
+        $template = $twig->loadTemplate(str_replace('.','/',$view).'.html');
         return $template->display($data);
 
     }

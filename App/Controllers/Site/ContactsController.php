@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers\Site;
-use \App\Controllers\BaseController;
+use \App\Controllers\ContainerController;
 use App\Classes\Redirect;
 use \App\Classes\Email;
 use \App\Classes\Config;
@@ -10,12 +10,13 @@ use App\Classes\Flash;
 use App\Classes\Request;
 use App\Models\Admin\Admins;
 
-class ContactsController extends BaseController{
+class ContactsController extends ContainerController{
 
     public function index(){
-        $data = ['title' => 'Página de contato'];
-        $template = $this->twig->loadTemplate( 'Site/Contacts/index.html' );
-        $template->display( $data );
+        $this->view('Site.Contacts.index',[
+            'title' => 'Página de contato'
+        ]);
+
     }
 
     public function send(){

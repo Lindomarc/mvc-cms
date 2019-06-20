@@ -4,12 +4,11 @@ use App\Classes\Config;
 /**
 * 
 */
-trait Controller
+trait ControllerAndMethod
 {
-
     public function getController(){
 
-        $folders = Config::config('controllers');
+        $folders = Config::load('controllers');
 
         $this->controller = ucfirst( $this->setMethod()['controller'] ).'Controller';
         foreach( $folders->folders as $folder ){
@@ -19,11 +18,11 @@ trait Controller
                 return "\\App\\Controllers\\{$folder}\\".$this->controller;
             }
         }
-        return "\\App\\Controllers\\Error\\NotFoundController";
+        return "\\App\\Controllers\\Errors\\NotFoundController";
 
     }
 
-    public function getMethod( $objetc ){
+    public function getMethod($objetc){
 
         if (!isset($this->setMethod()['method'])) {
             return 'index';
