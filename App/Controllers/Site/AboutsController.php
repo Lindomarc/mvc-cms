@@ -1,14 +1,13 @@
 <?php
 namespace App\Controllers\Site;
-use \App\Controllers\BaseController as BaseController;
+use \App\Controllers\ContainerController;
 
-class AboutsController extends BaseController{
-
+class AboutsController extends ContainerController{
+    
     public function index(){
 
         $data = ['title' => 'Pagina Inicial'];
-        $template = $this->twig->loadTemplate('Site/Contacts/abouts.html');
-        $template->display($data); 
+        $this->view('Site.Contacts.abouts', $data);
         
     }
 
