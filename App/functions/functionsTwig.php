@@ -7,3 +7,8 @@
     $message = new Twig_SimpleFunction('message', function($index){
         return Flash::get($index);
     });
+
+    $message_email = new Twig_SimpleFunction('message_email', function($index){
+        return Flash::get($index);
+    });
+    

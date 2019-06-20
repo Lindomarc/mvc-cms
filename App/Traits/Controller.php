@@ -1,6 +1,6 @@
 <?php
 namespace App\Traits;
-use App\Classes\Load;
+use App\Classes\Config;
 /**
 * 
 */
@@ -9,7 +9,7 @@ trait Controller
 
     public function getController(){
 
-        $folders = Load::config('controllers');
+        $folders = Config::config('controllers');
 
         $this->controller = ucfirst( $this->setMethod()['controller'] ).'Controller';
         foreach( $folders->folders as $folder ){

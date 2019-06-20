@@ -1,7 +1,7 @@
 <?php 
 namespace App\Classes;
-use \App\Config\EmailConfig as EmailConfig;
-use PHPMailer\PHPMailer\PHPMailer as PHPMailer;
+use \App\Classes\Config;
+use PHPMailer\PHPMailer\PHPMailer;
 class Email {
     private $email;
     private $body;
@@ -12,31 +12,31 @@ class Email {
     private $subject;
     private $message;
 
-    public function setEmail( $email ){
+    public function setEmail($email){
         $this->email = $email;
     }
 
-    public function setBody( $body ){
+    public function setBody($body){
         $this->body = $body;
     }
 
-    public function setFromAddress( $fromName ){
+    public function setFromAddress($fromName){
         $this->fromName = $fromName  ;
     }
 
-    public function setTo( $to ){
+    public function setTo($to){
         $this->to = $to;
     }
 
-    public function setFromFrom( $from ){
+    public function setFromFrom($from){
         $this->from = $from;
     }
 
-    public function setCc( $addAddress ){
+    public function setCc($addAddress){
         $this->addAddress = $addAddress;
     }
 
-    public function setSubject( $subject ){
+    public function setSubject($subject){
         $this->subject = $subject;
     }
 
@@ -45,35 +45,29 @@ class Email {
     }
     
     public function sendEmail(){    
-        $emailConfig = new EmailConfig();
         $mail = new PHPMailer();
         $mail->IsSmtp();
-        //Enable SMTP debugging
-        // 0 = off (for production use)
-        // 1 = client messages
-        // 2 = client and server messages
-        // $this->SMTPDebug = SMTP::DEBUG_SERVER;
-        $mail->SMTPDebug = 2;
-        $mail->Host = $emailConfig->smtp['host'];
-        $mail->Port = $emailConfig->smtp['port'];
-        $mail->Charset = $emailConfig->smtp['charset'];
+        $mail->SMTPDebug = Config::$config['smtp']['SMTPDebug'];
+        $mail->Host = Config::$config['smtp']['host'];
+        $mail->Port = Config::$config['smtp']['port'];
+        $mail->Charset = Config::$config['smtp']['charset'];
         // Se method não informar email, usar email do site
-        if( !empty( $this->from ) ){
-            $mail->setFrom( $this->from );
+        if( !empty($this->from)){
+            $mail->setFrom($this->from);
         }else{
-            $mail->setFrom( $emailConfig->site['from'] );
+            $mail->setFrom(Config::$config['site']['from']);
         }
-        $mail->SMTPsecure = 'ssl';
+        $mail->SMTPsecure = Config::$config['smtp']['SMTPsecure'];
         $mail->SMTPAuth = true;
-        $mail->Username = $emailConfig->smtp['username'];
-        $mail->Password = $emailConfig->smtp['password'];
-        if( !empty( $this->to ) ){
-            $mail->AddAddress( $this->to );
+        $mail->Username = Config::$config['smtp']['username'];
+        $mail->Password = Config::$config['smtp']['password'];
+        if( !empty($this->to)){
+            $mail->AddAddress($this->to);
         }else{
-            $mail->AddAddress( $emailConfig->site['from']  );
+            $mail->AddAddress(Config::$config['site']['from']);
         }
-        if( !empty( $this->addAddress ) ){
-            $mail->AddAddress( $this->addAddress );
+        if( !empty($this->addAddress)){
+            $mail->AddAddress($this->addAddress);
         }
         $mail->Subject = $this->subject;
         //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -81,19 +75,17 @@ class Email {
         // $mail->msgHTML(file_get_contents('contents.html'), __DIR__);
         $mail->IsHtml();
         // Se method não informar nome, usar nome do site ou empresa
-        if( !empty( $this->fromName ) ){
+        if( !empty($this->fromName)){
             $mail->FromName = $this->fromName;
         }else{
-            //TODO: cofigurar nome do site aqui
-            $mail->FromName =  'Configurar nome do site aqui' ;
+            $mail->FromName =  Config::$config['site']['name'] ;
         }
         $mail->AltBody = "Your email client needs to be HTML compliant";
-        $mail->MsgHTML( $this->body );
-        if ( $mail->Send() ) {
-            return true;    
-        } else {
-            return false;
-        }
+        $mail->MsgHTML($this->body);
+        //dd($mail->ErrorInfo);
+
+        return  $mail->Send();
+
     }
 
 }
