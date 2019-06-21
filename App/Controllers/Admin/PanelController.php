@@ -1,9 +1,10 @@
 <?php
 namespace App\Controllers\Admin;
-use \App\Controllers\BaseController;
+use \App\Controllers\ContainerController;
 
 
-class PanelController extends BaseController{
+class PanelController extends ContainerController
+{
 
     public function index(){
         dd('panel');
