@@ -4,13 +4,15 @@ use \App\Classes\Flash;
 use \App\Classes\Login;
 use \App\Classes\Redirect;
 use \App\Models\Admin\Admins; 
-use \App\Controllers\BaseController;
-
-class AdminController extends BaseController{
+use \App\Controllers\ContainerController;
+use \App\Classes\Hash;
+class AdminController extends ContainerController
+{
 
     public function index(){
+
         $this->view('Admin.login',[
-            'title' => 'Login - Administrador'
+            'title' => 'Login Administrativo'
         ]);
 
     }
@@ -22,7 +24,7 @@ class AdminController extends BaseController{
             $email = filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL );
     
             $logged = (new Login)->login($email, $password, new Admins);
-            
+
             if($logged){
                 return Redirect::to('panel');
             }

@@ -19,7 +19,7 @@ trait CollectionDb
         $this->sql .= $this->sqlPaginate();
         return $this;
 
-    }
+    } 
 
     public function get(){
         $list = $this->bindExecute();
@@ -32,10 +32,15 @@ trait CollectionDb
     }
 
     private function bindValues($list){
+
         if(!empty($this->binds)){
+
             foreach ($this->binds as $key => $value) {
-                $list->bindValues(":{$key}", $value);
+
+                $list->bindValue(":{$key}", $value);
+                
             }
+            
         }
     }
 
@@ -43,6 +48,7 @@ trait CollectionDb
         if(!isset($this->sql)){
             throw new Exception('Use o "$this->sql"');
         }
+
         $list = $this->connection->prepare($this->sql);
         $this->bindValues($list);
         $list->execute();
@@ -64,8 +70,10 @@ trait CollectionDb
 
     public function find($field, $value){
 
-        $this->sql = "select * from {$this->table} where {$field} = ?";
-   
+        $this->sql = "select * from {$this->table} where {$field} = :value";
+        $this->binds = [
+            'value' => $value
+        ];
         return $this;
     }
 
