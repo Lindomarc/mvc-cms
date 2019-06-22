@@ -13,9 +13,11 @@ use App\Models\Admin\Admins;
 class ContactsController extends ContainerController{
 
     public function index(){
-        $this->view('Site.Contacts.index',[
+        
+        $data = [
             'title' => 'Página de contato'
-        ]);
+        ];
+        $this->view($data, 'Site.Contacts.index');
 
     }
 

@@ -5,15 +5,11 @@ use App\Controllers\ContainerController;
 
 class HomeController extends ContainerController
 {
-
-    public function index(){
-        
-        $this->view('Site.Home.index',[
+    public function index()
+    {
+        $data = [
             'title' => 'Pagina Inicial'
-        ]);
-        
+        ];
+        $this->view($data, 'Site.Home.index');
     }
-
-
-
 }
