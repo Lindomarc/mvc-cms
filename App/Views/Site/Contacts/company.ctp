@@ -1,6 +1,6 @@
-{% extends "Layout.html" %}
+{% extends "Layout.ctp" %}
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
-    <h2>Página de produtos</h2>
+    <h2>Contatos da Empresa</h2>
 
 {% endblock %}

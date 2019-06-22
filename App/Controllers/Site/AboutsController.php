@@ -6,8 +6,10 @@ class AboutsController extends ContainerController{
     
     public function index(){
 
-        $data = ['title' => 'Pagina Inicial'];
-        $this->view('Site.Contacts.abouts', $data);
+        $data = [
+            'title' => 'Pagina Inicial'
+        ];
+        $this->view($data,  'Site.Contacts.abouts');
         
     }
 

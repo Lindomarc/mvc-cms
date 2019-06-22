@@ -1,4 +1,4 @@
-{% extends "Layout.html" %}
+{% extends "Layout.ctp" %}
 {% block content %}
     <h2>Ocorreu um erro interno</h2>
 {% endblock %}

@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $_SERVER["REQUEST_URI"])) {
     return false;    // serve the requested resource as-is.
-} else { 
+} else {
 
     /**
      * definir as constantes
@@ -19,6 +19,4 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $_SERVER["REQUEST_URI"])) {
     require "../App/functions/functions.php";
     require "../App/functions/functionsTwig.php";
     require "../bootstrap.php";
-    
 }
-?>

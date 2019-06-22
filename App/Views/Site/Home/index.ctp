@@ -1,4 +1,4 @@
-{% extends "Layout.html" %}
+{% extends "Layout.ctp" %}
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
     <h2>Página Inicial</h2>

@@ -6,10 +6,16 @@ use App\Classes\App;
  */
 trait View
 {
-    public function view($view, $data){
+    public function view($data, $view = ''){
 
         $twig =  App::get('twig');
-        $template = $twig->loadTemplate(str_replace('.','/',$view).'.html');
+
+        if (!empty($view)){
+            $view =  str_replace('.','/',$view).'.ctp';
+        }
+
+        $template = $twig->loadTemplate($view);
+
         return $template->display($data);
 
     }
