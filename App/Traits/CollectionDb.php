@@ -9,6 +9,8 @@ trait CollectionDb
     protected $search;
     protected $binds = [];
     protected $pdoStatement;
+    protected $sql;
+    protected $table;
 
     public function paginate($perPage){
         $this->perPage = $perPage;
@@ -64,8 +66,9 @@ trait CollectionDb
     public function all(){
 
         $this->sql =  "select * from {$this->table}";
-        
-        return $all->fetchAll();
+
+
+        return $this->fetchAll();
     }
 
     public function find($field, $value){

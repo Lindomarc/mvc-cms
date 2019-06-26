@@ -1,5 +1,8 @@
 <?php 
 namespace App\Classes;
+
+use Twig;
+
 class LoadTemplate{
 
     private $twig;
@@ -7,14 +10,13 @@ class LoadTemplate{
     
     private function loader(){
 
-        $this->loader = new \Twig_Loader_Filesystem( '../App/Views' );
+        $this->loader = new Twig\Loader\FilesystemLoader( '../App/Views' );
         return $this->loader;
     }
 
     public function init(){
 
-        //$this->loader = new \Twig_Loader_Filesystem(ROOT.'/App/Views');
-        $this->twig = new \Twig_Environment( $this->loader(),[
+        $this->twig = new Twig\Environment( $this->loader(),[
             'debug' => true,
            // 'cache' => ROOT.'../Cache',
             'auto_reload' => true

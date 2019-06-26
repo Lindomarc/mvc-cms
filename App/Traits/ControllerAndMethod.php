@@ -1,18 +1,26 @@
 <?php
+
 namespace App\Traits;
 use App\Classes\Config;
-/**
-* 
-*/
+use Exception;
+
 trait ControllerAndMethod
 {
+
+    protected $controller;
+
+    /**
+     * @return string
+     * @throws Exception
+     */
     public function getController(){
 
         $folders = Config::load('controllers');
 
         $this->controller = ucfirst( $this->setMethod()['controller'] ).'Controller';
+
         foreach( $folders->folders as $folder ){
-            // primeira letra da pasta sempre maiuscula
+
             ucfirst($folder);
             if( class_exists("\\App\\Controllers\\{$folder}\\".$this->controller)){
                 return "\\App\\Controllers\\{$folder}\\".$this->controller;
@@ -22,13 +30,18 @@ trait ControllerAndMethod
 
     }
 
-    public function getMethod($objetc){
+    /**
+     * @param $object
+     * @return string
+     * @throws Exception
+     */
+    public function getMethod($object){
 
         if (!isset($this->setMethod()['method'])) {
             return 'index';
         }
 
-        if(!method_exists($objetc,$this->setMethod()['method'])){
+        if(!method_exists($object,$this->setMethod()['method'])){
             throw new Exception("Não existe esse method ".$this->setMethod()['method']);
         }
 
@@ -36,6 +49,9 @@ trait ControllerAndMethod
 
     }
 
+    /**
+     * @return string
+     */
     public function getParameter(){
         return $this->setMethod()['parameter'] ?? '';
     }

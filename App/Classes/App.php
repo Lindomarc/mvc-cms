@@ -1,6 +1,8 @@
 <?php
 namespace App\Classes;
 
+use Exception;
+
 class App
 {
     private static $bind = [];
@@ -11,7 +13,7 @@ class App
 
     public static function get($key){ 
         if (!isset(static::$bind[$key])) {
-            throw new \Exception("Esse indice {$key} não existe no container");   
+            throw new Exception("{$key} não existe no container");
         }
         return static::$bind[$key]; 
     }
