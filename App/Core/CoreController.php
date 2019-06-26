@@ -31,4 +31,5 @@ class CoreController{
         }
         return [ 'controller' => DEFAULT_CONTROLLER];
     }
+
 }

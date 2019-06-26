@@ -1,14 +1,15 @@
 <?php 
     use App\Classes\Flash;
-    $site_url = new Twig_SimpleFunction('site_url', function(){
-        return 'http://'.$_SERVER['SERVER_NAME'].':8888';
+use Twig\TwigFunction;
+
+$site_url = new Twig\TwigFunction('site_url', function(){
+        return 'http://'.$_SERVER['SERVER_NAME'];
     });
 
-    $message = new Twig_SimpleFunction('message', function($index){
+    $message = new Twig\TwigFunction('message', function($index){
         return Flash::get($index);
     });
 
-    $message_email = new Twig_SimpleFunction('message_email', function($index){
+    $message_email = new Twig\TwigFunction('message_email', function($index){
         return Flash::get($index);
     });
-    

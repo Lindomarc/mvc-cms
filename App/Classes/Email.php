@@ -1,6 +1,6 @@
 <?php 
 namespace App\Classes;
-use \App\Classes\Config;
+
 use PHPMailer\PHPMailer\PHPMailer;
 class Email {
     private $email;
@@ -50,14 +50,12 @@ class Email {
         $mail->SMTPDebug = Config::$config['smtp']['SMTPDebug'];
         $mail->Host = Config::$config['smtp']['host'];
         $mail->Port = Config::$config['smtp']['port'];
-        $mail->Charset = Config::$config['smtp']['charset'];
         // Se method não informar email, usar email do site
         if( !empty($this->from)){
             $mail->setFrom($this->from);
         }else{
             $mail->setFrom(Config::$config['site']['from']);
         }
-        $mail->SMTPsecure = Config::$config['smtp']['SMTPsecure'];
         $mail->SMTPAuth = true;
         $mail->Username = Config::$config['smtp']['username'];
         $mail->Password = Config::$config['smtp']['password'];

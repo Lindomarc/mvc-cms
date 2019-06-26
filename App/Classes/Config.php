@@ -5,7 +5,12 @@ class Config
 {
     static $config;
 
-    public function load($index){
+    /**
+     * @param $index
+     * @return object
+     * @throws \Exception
+     */
+    public static  function load($index){
         
         static::$config = require "../App/Config/Config.php";
 

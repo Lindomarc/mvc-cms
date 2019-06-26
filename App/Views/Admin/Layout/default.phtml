@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>INSPINIA | Dashboard v.2</title>
-
     <link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
-
     <link href="/assets/admin/css/animate.css" rel="stylesheet">
     <link href="/assets/admin/css/style.css" rel="stylesheet">
-
 </head>
-
 <body>
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
-            {% include 'Admin/Elements/navbar.ctp' %}
+            {% include 'Admin/Elements/navbar.phtml' %}
         </nav>
-
         <div id="page-wrapper" class="gray-bg">
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
 
-                        {% include 'Admin/Elements/navbar-header.ctp' %}
+                        {% include 'Admin/Elements/navbar-header.phtml' %}
 
                     </div>
 
-                    {% include 'Admin/Elements/navbar-links.ctp' %}
+                    {% include 'Admin/Elements/navbar-links.phtml' %}
 
                 </nav>
             </div>
             <div class="wrapper wrapper-content">
 
-                {% include 'Admin/Elements/content.ctp' %}
+                {% block content %}{% endblock %}
 
             </div>
             <div class="footer">
 
-                {% include 'Admin/Elements/footer.ctp' %}
+                {% include 'Admin/Elements/footer.phtml' %}
 
             </div>
         </div>
         <div id="right-sidebar">
 
-            {% include 'Admin/Elements/right-sidebar.ctp' %}
+            {% include 'Admin/Elements/right-sidebar.phtml' %}
 
         </div>
     </div>
@@ -91,7 +83,5 @@
 
     <!-- Sparkline demo data  -->
     <script src="/assets/admin/js/demo/sparkline-demo.js"></script>
-
 </body>
-
 </html>
